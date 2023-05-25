@@ -1,0 +1,834 @@
+
+/* 幻灯片样式 */
+@keyframes slideshow {
+  0% {
+    background-image: url('./b2.jpg');
+  }
+
+  25% {
+    background-image: url('./1948.jpg');
+  }
+
+  50% {
+    background-image: url('./background.jpg');
+  }
+
+  75% {
+    background-image: url('./DreVVn5W4AEn0q2.jpg_large');
+  }
+  100% {
+    background-image: url('./163889.jpg');
+  }
+}
+.background-container {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: -1;
+  background: url(./background.jpg) no-repeat center;
+  background-size: cover;
+  background-position: 50% 23%;
+  background-attachment: fixed;
+  object-fit: cover;
+  animation-name: slideshow;
+  animation-duration: 15s;
+  animation-timing-function: ease-in-out;
+  animation-delay: 0.5s;
+  animation-iteration-count: infinite;
+  animation-direction: alternate;
+  background-size: 1600px 350px;
+  background-attachment: scroll;
+}
+
+
+body {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  min-height: 100vh;
+  overflow-x: hidden;
+  height: auto;
+  margin: 0;
+  overflow-y: auto;
+  background-size: cover;
+  width: 100%;
+  /* height: 100%; */
+  position: relative;
+  left: 0;
+  top: 0;
+  /* background-color: #ED6700; */
+}
+/* 搜索欄的樣式 */
+.container {
+  position: sticky;
+  height: 60px;
+  background: rgba(255, 255, 255, 0.7);
+  display: flex;
+  padding: auto 10px;
+  justify-content: space-around;
+  align-items: center;
+  border-radius: 30px;
+  backdrop-filter: blur(40px);
+  box-shadow: 0 0 5px 1px gray;
+  z-index: 2;
+  margin-top: 20px;
+}
+
+/* 時間盒子 */
+.timeBox {
+  position: absolute;
+  top: 10px;      /* 距离顶部的距离 */
+  left: 50%;    /* 距离右侧的距离 */
+  background-color: transparent;
+  height: 40px;
+  color: black;
+  text-align: center;
+  line-height: 40px;
+  font-size: 36px;
+  z-index: 5;
+  transform: translateX(-50%);
+  /* text-shadow: 0px 1px 0px #999, 0px 2px 0px #888, 0px 3px 0px #777, 0px 4px 0px #666, 0px 5px 0px #555, 0px 6px 0px #444, 0px 7px 0px #333, 0px 8px 7px #001135; */
+}
+
+
+/* 搜索盒子基本寬度設置和過度效果 */
+.search-box {
+  width: 100px;
+  transition: all 0.3s ease-in-out; 
+}
+
+/* 滑鼠經過搜索欄位時候變化寬度 */
+.container:hover .search-box {
+  width: 150px;
+}
+
+/* icon的基本設置 */
+.item {
+  margin: auto 20px;
+  font-size: 16px;
+  opacity: 0;
+  transition-delay: 0.3s;
+  transition: all 0.3s ease;
+}
+
+/* 滑鼠旋停時icon透明度爲1 */
+.container:hover .item {
+  opacity: 1;
+}
+
+/* 搜尋輸入欄 */
+.search-btn {
+  width: 130%;
+  border: none;
+  text-align: center;
+  outline: none;
+  background: inherit;
+  font-size: 18px;
+  transition: all 0.5s ease-in-out;
+}
+
+/* 同下 */
+.search-btn::placeholder {
+  color: rgba(225, 225, 225, 0.7);
+  text-shadow: 0 0 10px #f3f3f3;
+}
+
+/* 當滑鼠滑過搜尋欄搜尋欄中的預設顏色變化 */
+.container:hover .search-btn::placeholder {
+  color: rgba(119, 119, 119, 0.9);
+}
+
+/* 搜索按鈕 */
+#searchBtn {
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+  padding: 0;
+}
+
+.search-container {
+  position: absolute;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  padding-top: 30px;
+  margin-top: 10px;
+  top: 50px; 
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 10;
+  /* padding-bottom: -80px; */
+}
+
+/* 英文logo */
+#LOgo {
+  position: relative;
+  top: 280px;
+  left: -60px;
+  width: 550px;
+  height: auto;
+  z-index: 0;
+}
+#LOgoTWO {
+  position: relative;
+  top: -805px;
+  left: -60px;
+  width: 550px;
+  height: auto;
+  z-index: 0;
+}
+#LOgoTHREE {
+  position: relative;
+  top: -1175px;
+  left: -60px;
+  width: 550px;
+  height: auto;
+  z-index: 0;
+}
+#LOgoFOUR {
+  position: relative;
+  top: -1546px;
+  left: -60px;
+  width: 550px;
+  height: auto;
+  z-index: 0;
+}
+
+#LOgo img {
+  width: 100%;
+  height: auto;
+}
+#LOgoTWO img {
+  width: 100%;
+  height: auto;
+}
+#LOgoTHREE img {
+  width: 100%;
+  height: auto;
+}
+#LOgoFOUR img {
+  width: 100%;
+  height: auto;
+}
+
+/* 中文logo */
+#Cnlogo {
+  position: relative;
+  top: -250px;
+  left: 670px;
+  width: 950px;
+  height: auto;
+  z-index: 0;
+}
+
+#Cnlogo img {
+  width: 100%;
+  height: auto;
+}
+
+/* 顯示結果容器 */
+#results {
+  margin-top: 70px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  padding-top: 200px;
+  z-index: 2;
+  padding-bottom: 50px;
+  /* overflow-y: scroll; */
+  /* 讓容器在需要時始終顯示垂直滾動條 */
+  /* height: 100vh; */
+  /* 將容器高度設置為100%的可視區域高度 */
+  margin-top: 10px;
+  margin-bottom: 30px;
+}
+
+/* 書籍返回結果 */
+.book-item {
+  margin: 10px;
+  padding: 20px;
+  display: flex;
+  margin-bottom: 20px;
+  border: 1px solid #ccc;
+  background-color: white;
+  padding: 10x;
+  border-radius: 5px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  align-items: center;
+  width: 80%;
+  max-width: 1000px;
+  max-height: 100px;
+}
+
+/* 書籍封面 */
+.book-image {
+  width: 80px;
+  height: 100px;
+  object-fit: cover;
+  margin-right: 10px;
+}
+
+/* 書籍信息 */
+.book-details {
+  flex-grow: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  font-size: 14px;
+  margin-top: -20px;
+}
+
+/* 書名 */
+.book-details h3 {
+  margin-bottom: 0;
+  font-size: 16px;
+}
+
+.book-details p {
+  display: block;
+  margin: 0;
+}
+
+/* 作者 出版社 出版時間 */
+.author,
+.publisher,
+.published-date {
+  margin-right: 10px;
+  color: gray;
+  font-size: 12px;
+}
+
+.PaGe,
+.CateGories,
+.isbn {
+  font-size: 12px;
+  margin-right: 5px;
+}
+
+.PaGe {
+  color: orange;
+}
+
+.CateGories {
+  color: #61c0ee;
+}
+
+.isbn {
+  color: #528237;
+}
+
+/* preview按鈕 */
+.preview-button {
+  margin-right: 780px;
+  align-self: flex-end;
+  margin-top: 5px;
+  border: none;
+  color: white;
+  background-color: #1976d2;
+  padding: 5px 10px;
+  text-align: center;
+  display: inline-block;
+  font-size: 12px;
+  cursor: pointer;
+  border-radius: 5px;
+}
+
+.preview-button:hover {
+  background-color: #0056b3;
+}
+
+/* 收藏按鈕 */
+.favorites {
+  align-self: flex-end;
+  margin-top: -35px;
+  border: none;
+  color: white;
+  background-color: #1976d2;
+  padding: 5px 10px;
+  text-align: center;
+  display: inline-block;
+  font-size: 12px;
+  cursor: pointer;
+  border-radius: 5px;
+}
+
+/* 紅心按下fav顏色和取消fan顏色 */
+.fav {
+  color: red;
+}
+
+.fan {
+  color: white;
+}
+
+/* 點亮星星 */
+.fas,
+.far {
+  color: #ffc107;
+  /* 点亮的星星的颜色 */
+  font-size: 16px;
+  /* 星星的大小 */
+}
+
+.far {
+  color: #ccc;
+  /* 灰色的星星的颜色 */
+}
+
+/* 按鈕反饋 */
+.preview-button:active {
+  box-shadow: inset 0px 0px 10px rgba(0, 0, 0, 0.2);
+  background-color: rgba(0, 0, 0, 0.1);
+}
+
+#searchBtn:active {
+  transform: scale(1.2);
+}
+
+.favorites:active {
+  box-shadow: inset 0px 0px 10px rgba(0, 0, 0, 0.2);
+  background-color: rgba(0, 0, 0, 0.1);
+}
+
+/* 篩選器 */
+.filter-select {
+  font-family: "Font Awesome 6 Solid", Arial, sans-serif;
+  background-color: rgba(255, 255, 255, 0.7);
+  border: 1px solid rgba(200, 200, 200, 0.5);
+  border-radius: 5px;
+  font-size: 16px;
+  outline: none;
+  opacity: 0;
+  transition-delay: 0.3s;
+  transition: all 0.3s ease;
+  color: #333;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+  backdrop-filter: blur(4px);
+}
+
+.filter-select option {
+  font-family: Arial, sans-serif;
+  background-color: rgba(255, 255, 255, 0.9);
+  color: #333;
+  padding: 3px;
+}
+
+.container:hover .filter-select {
+  opacity: 1;
+}
+
+/* 頁腳 */
+footer {
+  padding: -10px 0;
+  text-align: center;
+}
+
+/* footer div {
+  margin-bottom: 10px;
+} */
+
+footer p {
+  margin-bottom: 8px;
+  line-height: 0.5; /* 减小行间距 */
+  font-size: 11px;
+}
+
+footer .social-icons {
+  display: inline-block;
+}
+
+footer .social-icons a {
+  margin: 0 0px; /* 减小图标间距 */
+  color: black;
+  font-size: 15px; /* 缩小图标大小 */
+  text-decoration: none;
+}
+
+footer .social-icons a:hover {
+  color: #ffa827;
+}
+
+.aboutUs {
+  font-weight: bold;
+}
+
+/* 用户登录 */
+.login-container {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  display: none;
+  justify-content: center;
+  align-items: center;
+  background-color: rgba(255, 255, 255, 0.9);
+  padding: 10px;
+  border-radius: 5px;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+  transition: all 0.3s ease;
+  backdrop-filter: blur(4px);
+  z-index: 100;
+}
+
+/* 用戶按鈕 */
+.user-btn {
+  background-color: #aaa;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  font-size: 16px;
+  font-weight: bold;
+  padding: 14px 20px;
+  cursor: pointer;
+  text-decoration: none;
+  box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
+  transition: all 0.3s ease;
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  z-index: 10;
+}
+
+/* 當滑鼠移動到用戶按鈕時 */
+.user-btn:hover {
+  background-color: #2980b9;
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.19), 0 6px 6px rgba(0, 0, 0, 0.23);
+}
+
+.user-btn:focus {
+  outline: none;
+}
+
+.login-container:hover {
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.15);
+}
+
+.login-form {
+  display: flex;
+  align-items: center;
+}
+
+.login-form input {
+  padding: 5px 10px;
+  margin-right: 5px;
+  border: 1px solid #ccc;
+  border-radius: 3px;
+  font-size: 14px;
+  transition: all 0.3s ease;
+}
+
+.login-form input:focus {
+  border-color: #007bff;
+  box-shadow: 0 0 3px rgba(0, 123, 255, 0.5);
+}
+
+/* 登入按鈕 */
+#loginBtn {
+  padding: 5px 10px;
+  background-color: #007bff;
+  color: #fff;
+  border: none;
+  border-radius: 3px;
+  font-size: 14px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+#loginBtn:hover {
+  background-color: #0056b3;
+}
+
+/* 用戶退出按鈕 */
+#logoutBtn {
+  padding: 5px 10px;
+  background-color: #dc3545;
+  color: #fff;
+  border:none !important;
+  border-radius: 3px;
+  font-size: 14px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+#logoutBtn:hover {
+  color: #c82333;
+}
+
+
+/* 夜間模式 */
+.dark-mode .user-btn {
+  background-color: #444;
+}
+
+.dark-mode .favorites-btn {
+  background-color: #444;
+}
+
+.dark-mode {
+  background-color: #222;
+  color: #f1f1f1;
+}
+
+.dark-mode .container {
+  background-color: rgba(0, 0, 0, 0.7);
+}
+
+.dark-mode #searchBtn {
+  color: #f1f1f1;
+}
+
+.dark-mode .book-item {
+  background-color: #333;
+  border-color: #444;
+}
+
+.dark-mode .preview-button,
+.dark-mode .favorites {
+  background-color: #444;
+}
+
+.dark-mode .preview-button:hover,
+.dark-mode .favorites:hover {
+  background-color: #333;
+}
+
+/* 搜索栏样式 */
+.dark-mode .container {
+background-color: #444;
+}
+
+/* 时间盒子 */
+.dark-mode .timeBox {
+  color: white;
+}
+
+/* 登录容器 */
+.dark-mode .login-container {
+  background-color: rgba(0, 0, 0, 0.7);
+  box-shadow: 0 1px 3px rgba(255, 255, 255, 0.1);
+}
+
+/* 搜索输入栏 */
+.dark-mode .search-btn::placeholder {
+  color: rgba(255, 255, 255, 0.7);
+}
+
+/* 滑鼠滑过搜索栏搜索栏中的默认颜色变化 */
+.dark-mode .container:hover .search-btn::placeholder {
+  color: rgba(255, 255, 255, 0.5);
+}
+
+/* 书籍信息 */
+.dark-mode .book-details {
+  color: #f1f1f1;
+}
+
+/* 作者 出版社 出版时间 */
+.dark-mode .author,
+.dark-mode .publisher,
+.dark-mode .published-date {
+  color: #ccc;
+}
+
+/* 页数 */
+.dark-mode .PaGe {
+  color: #f1c40f;
+}
+
+/* 过滤器 */
+.dark-mode .filter-select {
+  background-color: #444;
+  color: #f1f1f1;
+}
+
+/* 页脚 */
+.dark-mode footer {
+  background-color: #222;
+  color: #ccc;
+}
+
+.dark-mode .social-icons a:hover {
+  color: #aaa;
+}
+
+/* 用户登录 */
+.dark-mode .login-form input {
+  background-color: #444;
+  color: #f1f1f1;
+  border-color: #555;
+}
+
+.dark-mode #loginBtn,
+.dark-mode #logoutBtn {
+  background-color: #444;
+}
+
+.dark-mode #loginBtn:hover,
+.dark-mode #logoutBtn:hover {
+  background-color: #333;
+}
+
+.dark-mode #LOgo {
+  color: #f1f1f1;
+}
+
+.dark-mode .social-icons a {
+  color: #ccc;
+}
+
+/* 切換夜間模式的開關 */
+.switch {
+  position: absolute;
+  display: inline-block;
+  width: 40px;    /* 调整宽度 */
+  height: 20px;   /* 调整高度 */
+  top: 23px;        /* 调整距离顶部的距离 */
+  left: 25%;        /* 将左侧位置设置为50%，使其水平居中 */
+  transform: translateX(-50%);
+  z-index: 100;
+}
+
+.switch input {
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+
+.slider {
+  position: absolute;
+  cursor: pointer;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: #ccc;
+  transition: .3s;
+}
+
+.slider:before {
+  position: absolute;
+  content: "";
+  height: 16px;   /* 调整高度 */
+  width: 16px;    /* 调整宽度 */
+  left: 2px;
+  bottom: 2px;
+  background-color: white;
+  transition: .3s;
+}
+
+input:checked + .slider {
+  background-color: rgba(255, 168, 39, 0.4);
+}
+
+input:focus + .slider {
+  box-shadow: 0 0 1px #ffa827;
+}
+
+input:checked + .slider:before {
+  transform: translateX(20px);  /* 调整移动距离 */
+  background-color: #ffa827;
+}
+
+/* 夜間模式開關圆角 */
+.slider.round {
+  border-radius: 20px;  /* 调整圆角 */
+}
+
+.slider.round:before {
+  border-radius: 50%;
+}
+
+/* 收藏按鈕 */
+.favorites-btn {
+  background-color: #aaa;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  font-size: 16px;
+  font-weight: bold;
+  padding: 14px 20px;
+  cursor: pointer;
+  text-decoration: none;
+  box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
+  transition: all 0.3s ease;
+  position: absolute;
+  top: 10px;
+  right: 83px; /* 改变 right 的值，以便将按钮放在不同的位置 */
+  z-index: 100;
+}
+
+/* 在鼠标悬停时改变按钮背景颜色 */
+.favorites-btn:hover {
+  background-color: #2980b9;
+}
+
+
+.favorites-btn:focus {
+  outline: none;
+}
+
+/* 顯示天氣樣式 */
+.weather-widget {
+  position: absolute;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  background-color: #aaa;
+  /* background-image: linear-gradient(135deg, #f6d365 0%, #fda085 100%); */
+  padding: 10px;
+  border-radius: 10px;
+  z-index: 10;
+  transition: transform 0.3s, box-shadow 0.3s;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  top: 5px;
+  left: 5px;
+}
+
+.weather-widget:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15);
+  background-color: #2980b9;
+}
+
+.weather-info {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+}
+
+.city,
+.temperature,
+.weather-description,
+.weather-icon {
+  margin: 0 10px;
+  color: #fff;
+}
+
+.city {
+  font-size: 1.3rem;
+  font-weight: bold;
+}
+
+.temperature {
+  font-size: 1.6rem;
+}
+
+.weather-description {
+  font-size: 1rem;
+  text-transform: capitalize;
+}
+
+.weather-icon {
+  margin-top: -15px;
+  margin-left: -2px;
+  width: 32px; /* 调整图标大小 */
+  height: 32px;
+  
+}
+
+

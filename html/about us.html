@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>About Us</title>
+	<link rel="stylesheet" href="style.css">
+	<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCYYYvwZ44Yaza20r3T6vlU-JFQSutYLr0&callback=initMap"
+		async defer></script>
+	<style>
+		header {
+			background-color: #333;
+			color: white;
+			padding: 1rem;
+			text-align: center;
+		}
+
+		.map-section,
+		.about-section,
+		.contact-section,
+		.feedback-section {
+			width: 80%;
+			margin: 2rem auto;
+			padding: 1rem;
+			border-radius: 5px;
+			background-color: #f4f4f4;
+			box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+		}
+
+		h1 {
+			font-size: 1.5rem;
+			margin-bottom: 0.5rem;
+		}
+
+		#map {
+			width: 800px;
+			height: 800px;
+			margin: 1rem auto;
+			border-radius: 5px;
+			box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+		}
+
+		textarea {
+			width: 100%;
+			height: 100px;
+			resize: none;
+			margin-bottom: 1rem;
+		}
+
+		button {
+			background-color: #333;
+			color: white;
+			border: none;
+			padding: 0.5rem 1rem;
+			cursor: pointer;
+		}
+
+		button:hover {
+			background-color: #555;
+		}
+	</style>
+</head>
+
+<body>
+	<header>
+		<span class="logo">Our Book Search Engine</span>
+		<!-- <a class="about" href="about_us.html">About Us</a> -->
+	</header>
+
+	<main>
+		<section class="image-slider-section">
+			<h1>Display Area</h1>
+			<div class="slider-container">
+				<button class="slide-button prev">❮</button>
+				<img src="./163889.jpg" alt="Image 1">
+				<img src="./1948.jpg" alt="Image 2">
+				<img src="./702e40edcf6d527a7cb598ba2204d6be.jpg" alt="Image 3">
+				<button class="slide-button next">❯</button>
+			</div>
+		</section>
+
+		<!-- 關於我們 -->
+		<section class="about-section">
+			<h1>About Our Search Engine</h1>
+			<p>We are dedicated to providing the best book search experience for our users. Our search engine is
+				designed to help you find the books you are looking for from various sources on the web. We work hard to
+				ensure that our search results are relevant, up-to-date, and easy to access.</p>
+		</section>
+		<!-- 聯絡信息 -->
+		<section class="contact-section">
+			<h1>Contact Information</h1>
+			<p>Email: contact@example.com</p>
+			<p>Phone: +1 (123) 456-7890</p>
+			<p>Blog: <a href="http://blog.example.com" target="_blank">http://blog.example.com</a></p>
+		</section>
+		<!-- 意見欄 -->
+		<section class="feedback-section">
+			<h1>Leave Your Feedback</h1>
+			<form id="feedback-form" method="get">
+				<textarea id="feedback-textarea"
+					placeholder="Share your thoughts or suggestions with us (max. 500 characters)..."></textarea>
+				<div class="form-buttons">
+					<button class="back-button">Back to Search</button>
+					<button class="submit-button" type="submit">Submit Feedback</button>
+				</div>
+			</form>
+		</section>
+
+	</main>
+	<!-- 地圖欄 -->
+	<section class="map-section">
+		<h1>Our Location</h1>
+		<div id="map"></div>
+	</section>
+	<script>
+		// 點擊按鈕存儲意見事件
+		const feedbackForm = document.querySelector('#feedback-form');
+		const feedbackTextarea = document.querySelector('#feedback-textarea');
+		const submitButton = document.querySelector('.submit-button');
+		const backButton = document.querySelector('.back-button');
+
+		submitButton.addEventListener('click', function (event) {
+			event.preventDefault();
+
+			const feedbackText = feedbackTextarea.value;
+			localStorage.setItem('feedback', feedbackText);
+
+			alert('感谢您的回饋意見！');
+		});
+
+		backButton.addEventListener('click', function (event) {
+			event.preventDefault();
+
+			window.location.href = './小專1.0.html';
+		});
+
+
+
+
+		// 地圖
+		function initMap() {
+			var location = { lat: 24.150702394252402, lng: 120.65107266893376 }; // Change these values to your desired location
+			var map = new google.maps.Map(document.getElementById('map'), {
+				zoom: 16,
+				center: location
+			})
+			var marker = new google.maps.Marker({
+				position: location,
+				map: map
+			})
+		}
+
+		// 操控圖片的滑動
+		const prevButton = document.querySelector('.slide-button.prev');
+		const nextButton = document.querySelector('.slide-button.next');
+		const images = document.querySelectorAll('.slider-container img');
+		let currentIndex = 0;
+
+		function showImage(index) {
+			images.forEach((img, i) => {
+				img.style.display = i === index ? 'block' : 'none';
+			});
+		}
+
+		function slideToPrevious() {
+			currentIndex = (currentIndex - 1 + images.length) % images.length;
+			showImage(currentIndex);
+		}
+
+		function slideToNext() {
+			currentIndex = (currentIndex + 1) % images.length;
+			showImage(currentIndex);
+		}
+
+		prevButton.addEventListener('click', slideToPrevious);
+		nextButton.addEventListener('click', slideToNext);
+
+	</script>
+</body>
+
+</html>

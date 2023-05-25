@@ -1,0 +1,68 @@
+/* 顯示結果樣式 */
+
+#results {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    margin-top: 700px;
+    max-height: 100vh; /* 设置结果容器的最大高度，可以根据需要调整 */
+    overflow-y: auto; /* 当内容超过容器高度时，显示垂直滚动条 */
+    z-index: 1;
+}
+/* 顯示的整體 */
+.book-item {
+  margin: 10px;
+  padding: 20px;
+    display: flex;
+    margin-bottom: 20px;
+    border: 1px solid #ccc;
+    background-color: white;
+    padding: 20px;
+    border-radius: 5px;
+    /* transform:scale(1) ; */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    /* flex-direction: column; */
+    align-items: center;
+    width: 100%; /* 计算每个结果元素的宽度 */
+    max-width: 600px; /* 设置每个结果元素的最大宽度 */
+  }
+  
+/* 書籍封面 */
+  .book-image {
+    width: 128px;
+    height: 192px;
+    object-fit: cover;
+  }
+
+  /* 書籍信息 */
+  .book-details {
+    margin-top: 10px;
+    text-align: left;
+    margin-top: -90px;
+    margin-right: -20px;
+
+  }
+  
+  .book-details h3 {
+    margin: 0;
+  }
+  
+  .book-details p {
+    display: inline;
+    margin: 5px 0;
+  }
+  
+  .preview-button {
+    margin-top: 10px;
+    border: none;
+    color: white;
+    background-color: #4CAF50;
+    padding: 10px 20px;
+    text-align: center;
+    display: inline-block;
+    font-size: 16px;
+    cursor: pointer;
+    border-radius: 5px;
+  }
+
+  
