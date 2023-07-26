@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+<html lang="zh">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>圖書搜索器</title>
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+  <script src="./app1.0.js"></script>
+  <link rel="stylesheet" href="./style1.0.css">
+  <!-- font-awesome 樣式表 -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+    integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw=="
+    crossorigin="anonymous" referrerpolicy="no-referrer" />
+</head>
+
+<body>
+  <!-- 天氣顯示 -->
+  <div class="weather-widget">
+    <div class="weather-info">
+      <span class="city"></span>
+      <span class="temperature"></span>
+      <span class="weather-description"></span>
+      <span class="weather-icon"></span>
+    </div>
+  </div>
+  <!-- 顯示收藏按鈕 -->
+  <button id="showFavorites" class="favorites-btn"><i class="fa-regular fa-bookmark"></i></button>
+  <!-- 顯示時間 -->
+  <div class="timeBox"></div>
+  <!-- 夜間模式 -->
+  <label class="switch">
+    <input type="checkbox" id="darkModeToggle">
+    <span class="slider round"></span>
+  </label>
+  <div class="background-container">
+    <!-- logo字 -->
+    <div id="logo-background">
+      <div id="LOgo"><img src="./book.png" alt=""></div>
+      <div id="Cnlogo"><img src="./CN-book.png" alt=""></div>
+      <!-- <div id="LOgoTWO"><img src="./book.png" alt=""></div>
+      <div id="LOgoTHREE"><img src="./book.png" alt=""></div>
+      <div id="LOgoFOUR"><img src="./book.png" alt=""></div>
+      <div id="LOgoFIRVE"><img src="./book.png" alt=""></div> -->
+    </div>
+  </div>
+  <!-- 用户登录 -->
+  <button id="userBtn" class="user-btn"><i class="fa-regular fa-user"></i></button>
+  <div class="login-container">
+    <div class="login-form">
+      <input type="text" id="username" placeholder="UserName..." autocomplete="off" />
+      <input type="password" id="password" placeholder="PassWord..." autocomplete="off" />
+      <button id="loginBtn">Login</button>
+    </div>
+  </div>
+  <!-- 搜索欄盒子 -->
+  <div class="search-container">
+    <!-- 顯示框 -->
+    <div class="container">
+      <!-- book Icon -->
+      <i class="fa-solid fa-book fa-lg fa-xl item"></i>
+      <!-- 篩選器 -->
+      <div id="filterSelect" class="filter-select">
+        <select id="filterDropdown" class="filter-select">
+          <option value="">All</option>
+          <option value="intitle">Title</option>
+          <option value="inauthor">Author</option>
+          <option value="inpublisher">Publisher</option>
+          <option value="subject">Subject</option>
+          <option value="isbn">ISBN</option>
+        </select>
+      </div>
+      <!-- 按鈕盒子 -->
+      <div class="search-box">
+        <input id="searchInput" type="text" class="search-btn" placeholder="Search Books..." autocomplete="off">
+      </div>
+      <!-- 放大鏡icon按鈕  -->
+      <button id="searchBtn"><i class="fa-solid fa-magnifying-glass fa-2xl item"></i></button>
+    </div>
+    <!-- 放大鏡樣式外部鏈接 -->
+    <script src="https://kit.fontawesome.com/f23451c27c.js" crossorigin="anonymous"></script>
+  </div>
+  <!-- 返回書籍信息 -->
+  <div id="results"></div>
+  <!-- 頁腳 -->
+  <div>
+    <footer>
+      <div class="footer-content">
+        <div class="about-us">
+          <div class="social-icons">
+            <a href="./about us.html" class="aboutUs">關於我们</a>
+            <a href="https://www.facebook.com" target="_blank"><i class="fab fa-facebook-f"></i></a>
+            <a href="https://www.twitter.com" target="_blank"><i class="fab fa-twitter"></i></a>
+            <a href="https://www.linkedin.com" target="_blank"><i class="fab fa-linkedin-in"></i></a>
+            <a href="https://www.instagram.com" target="_blank"><i class="fab fa-instagram"></i></a>
+          </div>
+          <p>電話: +1 (123) 456-7890</p>
+          <p>郵箱: contact@example.com</p>
+        </div>
+        <p>&copy; 2023 圖書搜索器. All rights reserved.</p>
+      </div>
+    </footer>
+  </div>
+  <script>
+// 天氣顯示
+function getWeather() {
+  var url = `https://api.openweathermap.org/data/2.5/weather?lat=24.14805603809809&lon=120.67297835780606&appid=8b2c7decb669f70ecf50e4833df4be34&units=metric&lang=zh_cn`;
+
+  fetch(url)
+    .then(response => response.json())
+    .then(data => {
+      console.log('返回的 JSON 数据：', data) // 在这里打印 JSON 数据
+    displayWeather(data)
+  })
+    .catch(error => {
+      console.error('获取天气数据时发生错误:', error)
+    });
+}
+
+function displayWeather(data) {
+  var city = data.name
+  var temperature = Math.round(data.main.temp)
+  var weatherDescription = data.weather[0].description
+  var weatherIcon = data.weather[0].icon
+
+  document.querySelector('.city').textContent = city
+  document.querySelector('.temperature').textContent = `${temperature}°C`
+  document.querySelector('.weather-description').textContent = weatherDescription
+
+  // 显示天气图标
+  var weatherIconUrl = `http://openweathermap.org/img/wn/${weatherIcon}.png`
+  var weatherIconElement = document.querySelector('.weather-icon')
+  weatherIconElement.innerHTML = `<img src="${weatherIconUrl}" alt="Weather icon">`
+}
+// 获取并显示天气信息
+getWeather()
+  </script>
+
+</body>
+<script>
+  // 夜間模式
+  document.getElementById('darkModeToggle')
+    .addEventListener('click', function () {
+      document.body.classList.toggle('dark-mode')
+    })
+
+// 点击用户按钮时显示登录界面并隐藏用户按钮
+document.getElementById("userBtn").addEventListener("click", function () {
+  document.querySelector(".login-container").style.display = "block"
+  document.getElementById("userBtn").style.display = "none"
+});
+
+// 登录按钮逻辑
+document.getElementById("loginBtn").addEventListener("click", function () {
+  var username = document.getElementById("username").value
+  var password = document.getElementById("password").value
+
+  if (!username || !password) {
+    alert("用户名或密码不能为空")
+    return
+  }
+
+  // 模拟验证用户名和密码
+  if (username === "user" && password === "1234") {
+    localStorage.setItem("username", username)
+    localStorage.setItem("isLoggedIn", "true")
+    alert("登录成功")
+    document.location.reload()
+  } else {
+    alert("用户名或密码错误")
+  }
+})
+
+function showUserInfo() {
+  document.querySelector(".login-container").innerHTML = `
+    <div class="user-info">
+      <button id="logoutBtn">Sign out</button>
+    </div>
+  `
+  document.querySelector(".login-container").style.display = "block"
+  document.getElementById("userBtn").style.display = "none"
+
+  // 退出登录
+  document.getElementById("logoutBtn").addEventListener("click", function () {
+    localStorage.removeItem("username")
+    localStorage.removeItem("isLoggedIn")
+    document.querySelector(".login-container").style.display = "none"
+    document.getElementById("userBtn").style.display = "inline-block"
+  })
+}
+
+function showUserInfo() {
+  document.querySelector(".login-container").innerHTML = `
+    <div class="user-info">
+      <button id="logoutBtn"><i class="fa-solid fa-arrow-right-from-bracket"></i></button>
+    </div>
+  `
+  document.querySelector(".login-container").style.display = "block"
+  document.getElementById("userBtn").style.display = "none"
+
+  // 退出登录
+  document.getElementById("logoutBtn").addEventListener("click", function () {
+    localStorage.removeItem("username")
+    localStorage.removeItem("isLoggedIn")
+    document.querySelector(".login-container").style.display = "none"
+    document.getElementById("userBtn").style.display = "inline-block"
+    showLoginForm() // 显示登录表单
+  })
+}
+
+function showLoginForm() {
+  document.querySelector(".login-container").innerHTML = `
+    <div class="login-form">
+      <input type="text" id="username" placeholder="UserName..." autocomplete="off" />
+      <input type="password" id="password" placeholder="PassWord..." autocomplete="off" />
+      <button id="loginBtn">Login</button>
+    </div>
+  `;
+  document.getElementById("loginBtn").addEventListener("click", function () {
+    var username = document.getElementById("username").value
+    var password = document.getElementById("password").value
+
+    if (!username || !password) {
+      alert("用户名或密码不能为空")
+      return
+    }
+
+    if (username === "user" && password === "1234") {
+      localStorage.setItem("username", username)
+      localStorage.setItem("isLoggedIn", "true")
+      alert("登录成功")
+      showUserInfo()
+    } else {
+      alert("用户名或密码错误")
+    }
+  })
+}
+
+document.getElementById("userBtn").addEventListener("click", function () {
+  document.getElementById("userBtn").style.display = "none"
+  showLoginForm() // 显示登录表单
+})
+
+// 检查用户是否已登录
+if (localStorage.getItem("isLoggedIn") === "true") {
+  showUserInfo()
+} else {
+  showLoginForm()
+}
+</script>
+
+</html>

@@ -1,0 +1,153 @@
+/* Reset */
+* {
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+}
+
+body {
+	font-family: 'Arial', sans-serif;
+	line-height: 1.6;
+	margin: 0;
+	padding: 0;
+}
+
+/* Header */
+header {
+	background-color: #333;
+	color: #fff;
+	padding: 20px;
+	text-align: center;
+}
+
+header .logo {
+	font-size: 24px;
+	font-weight: bold;
+}
+
+header .about {
+	color: #fff;
+	text-decoration: none;
+	margin-left: 10px;
+}
+
+/* Main */
+main {
+	width: 80%;
+	margin: 30px auto;
+}
+
+.about-section,
+.contact-section,
+.feedback-section {
+	margin-bottom: 40px;
+}
+
+h1 {
+	font-size: 28px;
+	margin-bottom: 20px;
+}
+
+p {
+	font-size: 18px;
+	margin-bottom: 10px;
+}
+
+a {
+	color: #333;
+	text-decoration: none;
+}
+
+a:hover {
+	text-decoration: underline;
+}
+
+.site-list {
+	list-style-type: disc;
+	padding-left: 20px;
+}
+
+/* Form */
+form {
+	display: flex;
+	flex-direction: column;
+}
+
+textarea {
+	width: 100%;
+	min-height: 100px;
+	margin-bottom: 20px;
+	resize: none;
+	padding: 10px;
+	border-radius: 10px;
+}
+
+.form-buttons {
+	display: flex;
+	justify-content: space-between;
+}
+
+.submit-button,
+.back-button {
+	background-color: #333;
+	color: #fff;
+	border: none;
+	padding: 10px;
+	cursor: pointer;
+	transition: background-color 0.3s;
+	border-radius: 10px;
+}
+
+.submit-button:hover,
+.back-button:hover {
+	background-color: #444;
+}
+
+
+/* 圖片滑動 */
+.image-slider-section {
+	text-align: center;
+  }
+  
+  .slider-container {
+	position: relative;
+	display: inline-block;
+  }
+  
+  .slider-container img {
+	display: none;
+  }
+  
+  .slider-container img:first-child {
+	display: block;
+  }
+  
+  .slide-button {
+	position: absolute;
+	top: 50%;
+	transform: translateY(-50%);
+	font-size: 2rem;
+	background: transparent;
+	border: none;
+	cursor: pointer;
+	padding: 0;
+	outline: none;
+  }
+  
+  .slide-button.prev {
+	color: black;
+	left: -2rem;
+  }
+  
+  .slide-button.next {
+	color: black;
+	right: -2rem;
+  }
+  
+  .slider-container img {
+	width: 600px; /* 您可以自定義圖片的寬度 */
+	height: 200px; /* 您可以自定義圖片的高度 */
+	object-fit: cover; /* 保持圖片的縱橫比 */
+	display: none;
+  }
+  
